@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>mqtt forward</title>
+    
+    <script>
+        function serviceStatus() {
+
+            let request = new Request("/status")
+            fetch(request).then((response) => response.json()).then((data) => {
+                document.getElementById("sub_url").value = data.sub_url
+                document.getElementById("sub_topic").value = data.sub_topic
+                document.getElementById("sub_start").value = data.sub_start
+                document.getElementById("sub_stop").value = data.sub_stop
+                document.getElementById("sub_count").value = data.sub_count
+
+                document.getElementById("pub_url").value = data.pub_url
+                document.getElementById("pub_topic").value = data.pub_topic
+                document.getElementById("pub_start").value = data.pub_start
+                document.getElementById("pub_stop").value = data.pub_stop
+                document.getElementById("pub_count").value = data.pub_count
+
+                document.getElementById("sub_last").innerText = data.sub_last;
+                document.getElementById("pub_last").innerText = data.pub_last;
+                
+            })
+
+        }
+
+        function beginRefresh() {
+            serviceStatus()
+            setInterval(serviceStatus, 5000)
+        }
+    </script>
+</head>
+
+<body onload="beginRefresh()">
+    <div>
+        <h1>服务状态</h1>
+        <h2>
+            订阅
+            <h3>
+                <div>
+                    &nbsp;&nbsp;<label>地址</label>
+
+                    <input id="sub_url" type="text" readonly>
+                    &nbsp;&nbsp;<label>主题</label>
+
+                    <input id="sub_topic" type="text" readonly>
+                    &nbsp;&nbsp;<label>启动</label>
+
+                    <input id="sub_start" type="text" readonly>
+                    &nbsp;&nbsp;<label>停止</label>
+
+                    <input id="sub_stop" type="text" readonly>
+                    &nbsp;&nbsp;<label>消息</label>
+                    <input id="sub_count" type="text" readonly>
+                </div>
+            </h3>
+        </h2>
+        <h2>
+            转发
+            <h3>
+                <div>
+                    &nbsp;&nbsp;<label>地址</label>
+
+                    <input id="pub_url" type="text" readonly>
+                    &nbsp;&nbsp;<label>主题</label>
+
+                    <input id="pub_topic" type="text" readonly>
+                    &nbsp;&nbsp;<label>启动</label>
+
+                    <input id="pub_start" type="text" readonly>
+                    &nbsp;&nbsp;<label>停止</label>
+
+                    <input id="pub_stop" type="text" readonly>
+                    &nbsp;&nbsp;<label>消息</label>
+                    <input id="pub_count" type="text" readonly>
+                </div>
+            </h3>
+        </h2>
+        <h2>
+            最新
+            <h3>
+                &nbsp;&nbsp;订阅
+                    <a href="/sub_last" target="_blank" id="sub_last" type="link" onclick="showlastsub()">
+                    </a>
+                    <area>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                转发
+                
+                <a href="/pub_last" target="_blank" id="pub_last" type="link" onclick="showlastpub()"></a>
+            </h3>
+        </h2>
+    </div>
+    <!-- <div>
+        <h1>系统管理</h1>
+
+        <button>配置</button>
+        <button>启动</button>
+        <button>停止</button>
+    </div> -->
+
+</body>

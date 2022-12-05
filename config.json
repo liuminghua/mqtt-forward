@@ -1,0 +1,35 @@
+{
+    "http": {
+        "host": "127.0.0.1",
+        "port": 9999
+    },
+    "subCfg": {
+        "url": "mqtt://36.137.14.74:1883",
+        "option": {
+            "clientId":"forward_sub",
+            "username": "mqtt_user",
+            "password": "0okmNHT",
+            "clean":true,
+            "reconeectPeriod":3000
+        },
+        "topic": "junkman"
+    },
+    "pubCfg": {
+        "url": "mqtt://broker-cn.emqx.io:1883",
+        "option": {
+            "clientId":"DaNanHaiShiHuaGongYeQu",
+            "username": "DaNanHaiShiHuaGongYeQu",
+            "password": "",
+            "clean":true,
+            "reconeectPeriod":3000,
+            "protocolVersion":5
+        },
+        "topic": "pub2forward"
+    },
+    "unitsDict": [
+        {
+            "clientId": "zhongshiyouguangshihua",
+            "unitcode": "1234567890-example"
+        }
+    ]
+}

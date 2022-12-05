@@ -1,0 +1,16 @@
+{
+  "name": "mqtt_forward",
+  "version": "1.0.0",
+  "description": "mqtt数据包转发",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["mqtt", "forward"],
+  "author": "mingh.liu@gmail.com",
+  "license": "ISC",
+  "dependencies": {
+    "log4js": "^6.7.1",
+    "mqtt": "^4.3.7"
+  }
+}
